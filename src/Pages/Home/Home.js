@@ -4,7 +4,7 @@ import codersGround from '../../assets/hero-img.png';
 
 const Home = () => {
     return (
-        <div className="hero min-h-[80vh] bg-base-200">
+        <div className="hero min-h-[85vh] bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse gap-20">
                 <img src={codersGround} className="max-w-xl rounded-lg shadow-2xl" />
                 <div>
