@@ -13,7 +13,7 @@ const CoursesSidebar = () => {
     }, [])
 
     return (
-        <aside className="p-6 bg-base-200 md:min-h-screen">
+        <aside className="p-6 bg-base-200 h-auto">
             <div className="space-y-8 text-sm">
                 <div className="space-y-2">
                     <h2 className="text-lg font-bold tracking-widest uppercase">Our courses</h2>
