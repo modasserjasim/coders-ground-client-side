@@ -1,8 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
+    const { loginWithGoogle } = useContext(AuthContext);
+
+    const GoogleProvider = new GoogleAuthProvider();
+    const handleGoogleLogin = () => {
+        loginWithGoogle(GoogleProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error))
+
+    }
     return (
         <div className='flex items-center min-h-[84vh] py-10 m-3'>
             <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
@@ -29,7 +44,7 @@ const Login = () => {
                     <hr className="w-full dark:text-gray-400" />
                 </div>
                 <div className="my-6 space-y-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                    <button onClick={handleGoogleLogin} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                         <IoLogoGoogle />
                         <p>Login with Google</p>
                     </button>

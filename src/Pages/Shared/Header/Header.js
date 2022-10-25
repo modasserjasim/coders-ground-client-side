@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
-import { HiMenuAlt1, HiOutlineX } from "react-icons/hi";
+import { useContext } from 'react';
+import { HiMenuAlt1, HiOutlineX, HiUserCircle } from "react-icons/hi";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/codersground-black.png';
+import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext);
+    // console.log(user);
+    console.log(user);
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                // Sign-out successful.
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
     const [navbar, setNavbar] = useState(false);
 
     return (
@@ -20,15 +35,20 @@ const Header = () => {
                                 <input type="checkbox" />
                                 <IoSunnyOutline className="swap-on fill-current text-2xl" />
                                 <IoMoonOutline className="swap-off fill-current text-2xl" />
-                                {/* <HiMoon className="swap-off fill-current text-3xl" /> */}
                             </label>
-                            <div className="tooltip tooltip-bottom" data-tip="hello">
-                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                                    <div className="w-8 rounded-full">
-                                        <img src="https://placeimg.com/80/80/people" />
-                                    </div>
-                                </label>
-                            </div>
+                            {
+                                user?.uid &&
+                                <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                                    <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                        {
+                                            user?.photoURL ? <div className="w-8 rounded-full">
+                                                <img src={user?.photoURL} alt='User img' /> </div> :
+                                                <div className="w-8 rounded-full">
+                                                    <HiUserCircle /> </div>
+                                        }
+                                    </label>
+                                </div>
+                            }
                             <button
                                 className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                                 onClick={() => setNavbar(!navbar)}
@@ -73,39 +93,61 @@ const Header = () => {
                         </ul>
 
                         <div className="mt-3 space-y-2 md:hidden sm:inline-block">
-                            <Link to='/login'
-                                className="px-4 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
-                            >
-                                Login
-                            </Link>
-                            <Link to='/register'
-                                className="px-4 py-2 text-gray-800 bg-white rounded-md shadow hover:bg-gray-100"
-                            >
-                                Register
-                            </Link>
+                            {
+                                user?.uid ? <Link onClick={handleLogOut}
+                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                >
+                                    Log Out
+                                </Link> : <>
+                                    <Link to='/login'
+                                        className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                    >
+                                        Login
+                                    </Link>
+                                    <Link to='/register'
+                                        className="px-4 py-2 btn-primary rounded-md shadow"
+                                    >
+                                        Register
+                                    </Link>
+                                </>
+                            }
                         </div>
                     </div>
                 </div>
                 <div className="hidden space-x-2 md:flex items-center">
                     <div>
-                        <Link to='/login'
-                            className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
-                        >
-                            Login
-                        </Link>
-                        <Link to='/register'
-                            className="px-4 py-2 btn-primary rounded-md shadow"
-                        >
-                            Register
-                        </Link>
+                        {
+                            user?.uid ? <Link onClick={handleLogOut}
+                                className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                            >
+                                Log Out
+                            </Link> : <>
+                                <Link to='/login'
+                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                >
+                                    Login
+                                </Link>
+                                <Link to='/register'
+                                    className="px-4 py-2 btn-primary rounded-md shadow"
+                                >
+                                    Register
+                                </Link>
+                            </>
+                        }
                     </div>
-                    <div className="tooltip tooltip-bottom" data-tip="hello">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="https://placeimg.com/80/80/people" />
-                            </div>
-                        </label>
-                    </div>
+                    {
+                        user?.uid &&
+                        <div className="tooltip tooltip-bottom" data-tip={user?.displayName}>
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                {
+                                    user?.photoURL ? <div className="w-8 rounded-full">
+                                        <img src={user?.photoURL} alt='User img' /> </div> :
+                                        <div className="w-8 rounded-full">
+                                            <HiUserCircle /> </div>
+                                }
+                            </label>
+                        </div>
+                    }
                 </div>
 
             </div>
