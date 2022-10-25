@@ -3,20 +3,28 @@ import { Link } from 'react-router-dom';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
-    const { loginWithGoogle } = useContext(AuthContext);
+    const { loginWithGoogle, loginWithGithub } = useContext(AuthContext);
 
-    const GoogleProvider = new GoogleAuthProvider();
+    const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
-        loginWithGoogle(GoogleProvider)
+        loginWithGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
                 console.log(user);
             })
             .catch(error => console.log(error))
+    }
 
+    const githubProvider = new GithubAuthProvider();
+    const handleLoginGithub = () => {
+        loginWithGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
     }
     return (
         <div className='flex items-center min-h-[84vh] py-10 m-3'>
@@ -44,11 +52,11 @@ const Login = () => {
                     <hr className="w-full dark:text-gray-400" />
                 </div>
                 <div className="my-6 space-y-4">
-                    <button onClick={handleGoogleLogin} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                    <button onClick={handleGoogleLogin} type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                         <IoLogoGoogle />
                         <p>Login with Google</p>
                     </button>
-                    <button aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                    <button onClick={handleLoginGithub} type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
                         <IoLogoGithub />
                         <p>Login with GitHub</p>
                     </button>
