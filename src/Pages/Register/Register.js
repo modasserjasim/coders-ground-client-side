@@ -37,13 +37,13 @@ const Register = () => {
                     Register an account
                 </h2>
                 <form onSubmit={handleUserRegistration} className="mt-6">
-                    <label htmlFor="name" className="block text-xs font-semibold text-gray-600 uppercase">Your Name</label>
+                    <label htmlFor="name" className="block text-xs font-semibold text-gray-600 mb-1">Your Name</label>
                     <input id="name" type="text" name="name" placeholder="Modasser Jasim" className="w-full px-3 py-2 border rounded-md" required />
-                    <label htmlFor="photo" className="block text-xs font-semibold text-gray-600 uppercase mt-4">Photo URL</label>
+                    <label htmlFor="photo" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Photo URL</label>
                     <input id="photo" type="text" name="photo" placeholder="modasserjasim.com/profile.png" className="w-full px-3 py-2 border rounded-md" />
-                    <label htmlFor="email" className="block text-xs font-semibold text-gray-600 uppercase mt-4">E-mail Address</label>
+                    <label htmlFor="email" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">E-mail Address</label>
                     <input id="email" type="email" name="email" placeholder="hello@modasserjasim.com" autoComplete="email" className="w-full px-3 py-2 border rounded-md" required />
-                    <label htmlFor="password" className="block text-xs font-semibold text-gray-600 uppercase mt-4">Password</label>
+                    <label htmlFor="password" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Password</label>
                     <input id="password" type="password" name="password" placeholder="********" className="w-full px-3 py-2 border rounded-md" required />
                     <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-primary shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none border rounded-md">
                         Register Now
