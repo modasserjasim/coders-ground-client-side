@@ -26,11 +26,14 @@ const Login = () => {
                 console.log(user);
             })
     }
+    const handleLogin = () => {
+        console.log('clicked');
+    }
     return (
         <div className='flex items-center min-h-[84vh] py-10 m-3'>
             <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
                 <h2 className="mb-10 text-3xl font-semibold text-center">Login to your account</h2>
-                <form className="space-y-8 ng-untouched ng-pristine ng-valid">
+                <form onSubmit={handleLogin} className="space-y-8 ng-untouched ng-pristine ng-valid">
                     <div className="space-y-4">
                         <div className="space-y-2">
                             <label className="block text-sm">Email address</label>
@@ -39,7 +42,7 @@ const Login = () => {
                         <div className="space-y-2">
                             <div className="flex justify-between">
                                 <label className="text-sm">Password</label>
-                                <Link className="text-xs hover:underline dark:text-gray-400">Forgot password?</Link>
+                                <Link className="text-xs hover:underline">Forgot password?</Link>
                             </div>
                             <input type="password" name="password" id="password" placeholder="******" className="w-full px-3 py-2 border rounded-md" />
                         </div>
@@ -47,8 +50,8 @@ const Login = () => {
                     <button type="button" className="w-full px-8 py-3 font-semibold rounded-md btn-primary">Login</button>
                 </form>
                 <div className="flex items-center w-full my-4">
-                    <hr className="w-full dark:text-gray-400" />
-                    <p className="px-3 dark:text-gray-400">OR</p>
+                    <hr className="w-full" />
+                    <p className="px-3 ">OR</p>
                     <hr className="w-full dark:text-gray-400" />
                 </div>
                 <div className="my-6 space-y-4">

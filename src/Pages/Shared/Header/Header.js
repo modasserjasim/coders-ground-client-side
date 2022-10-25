@@ -43,7 +43,7 @@ const Header = () => {
                                         {
                                             user?.photoURL ? <div className="w-8 rounded-full">
                                                 <img src={user?.photoURL} alt='User img' /> </div> :
-                                                <div className="w-8 rounded-full">
+                                                <div className="text-3xl rounded-full">
                                                     <HiUserCircle /> </div>
                                         }
                                     </label>
@@ -142,7 +142,7 @@ const Header = () => {
                                 {
                                     user?.photoURL ? <div className="w-8 rounded-full">
                                         <img src={user?.photoURL} alt='User img' /> </div> :
-                                        <div className="w-8 rounded-full">
+                                        <div className="text-3xl rounded-full">
                                             <HiUserCircle /> </div>
                                 }
                             </label>
