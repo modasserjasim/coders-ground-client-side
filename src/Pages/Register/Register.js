@@ -6,8 +6,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const { registerNewUser } = useContext(AuthContext);
-    console.log('this is from registration');
+    const { registerNewUser, updateUserProfile } = useContext(AuthContext);
 
     const handleUserRegistration = (e) => {
         console.log(e);
@@ -22,6 +21,7 @@ const Register = () => {
         registerNewUser(email, password)
             .then(result => {
                 const user = result.user;
+                handleUpdateUserProfile(name, photoURL);
                 console.log(user);
             })
             .catch(error => {
@@ -29,6 +29,17 @@ const Register = () => {
                 const errorMessage = error.message;
             })
 
+    }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = { displayName: name, photoURL: photoURL };
+        updateUserProfile(profile)
+            .then(() => {
+                console.log('profile updated');
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+            })
     }
     return (
         <div className='flex items-center min-h-[84vh] py-10 m-3 md:py-14'>
