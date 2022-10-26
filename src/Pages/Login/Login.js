@@ -4,6 +4,7 @@ import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
     const { loginWithGoogle, loginWithGithub, loginWithEmail } = useContext(AuthContext);
@@ -16,10 +17,13 @@ const Login = () => {
         loginWithGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 navigate(from, { replace: true });
+                toast.success(`You have successfully logged in as ${user.displayName}`);
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                const errorCode = error.code;
+                toast.error(`Sorry! ${errorCode}`);
+            })
     }
 
     const githubProvider = new GithubAuthProvider();
@@ -27,8 +31,12 @@ const Login = () => {
         loginWithGithub(githubProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                toast.success(`You have successfully logged in as ${user.displayName}`);
                 navigate(from, { replace: true });
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                toast.error(`Sorry! ${errorCode}`);
             })
     }
     const handleLogin = (e) => {
@@ -40,12 +48,12 @@ const Login = () => {
         loginWithEmail(email, password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                toast.success(`You have successfully logged in as ${user.displayName}`);
                 navigate(from, { replace: true });
             })
             .catch(error => {
                 const errorCode = error.code;
-                const errorMessage = error.message;
+                toast.error(`Sorry! ${errorCode}`);
             })
     }
     return (

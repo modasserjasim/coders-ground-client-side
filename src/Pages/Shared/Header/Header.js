@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { HiMenuAlt1, HiOutlineX, HiUserCircle } from "react-icons/hi";
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import { Link } from 'react-router-dom';
@@ -12,7 +13,7 @@ const Header = () => {
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                // Sign-out successful.
+                toast.success('You have logged out from the site');
             })
             .catch((error) => {
                 console.log(error);

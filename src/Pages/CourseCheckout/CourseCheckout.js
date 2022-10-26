@@ -1,5 +1,6 @@
 import React from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { IoWarningOutline } from "react-icons/io5";
 import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -12,11 +13,11 @@ const CourseCheckout = () => {
     const total = (price + parseFloat(taxTotal)).toFixed(2);
 
     const handlePayment = () => {
-        alert('You are allset')
+        toast.success('You are enrolled to the course. Please check your email for more information.');
     }
     return (
-        <div className='min-h-[82vh]'>
-            <h1 className='text-4xl text-center font-bold py-12'>Checkout Now</h1>
+        <div className='min-h-[82vh] py-12'>
+            <h1 className='text-4xl text-center font-bold pb-12'>Checkout Now</h1>
             <div className="md:grid grid-cols-3 flex flex-col-reverse px-4 md:px-6 max-w-7xl mx-auto">
                 <div className="md:col-span-2 col-span-3 bg-base-200 space-y-8 p-12 rounded-l-md">
                     <div className="p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
@@ -61,7 +62,7 @@ const CourseCheckout = () => {
                         Pay ${total}
                     </button>
                 </div>
-                <div className="col-span-3 border-r border-t border-b md:col-span-1 shadow-sm drop-shadow-xl rounded-r-md">
+                <div className="col-span-3 border-r border-l md:border-l-0 border-t border-b md:col-span-1 shadow-sm drop-shadow-xl rounded-r-md">
                     <h1 className="py-6 border-b-2 text-xl px-8">Order Summary</h1>
                     <div className="flex justify-between items-center gap-3 border-b px-8 py-4">
                         <div className="flex items-center gap-2">

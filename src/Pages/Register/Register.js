@@ -1,28 +1,28 @@
 import React from 'react';
 import { useContext } from 'react';
+import toast from 'react-hot-toast';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const { registerNewUser, updateUserProfile } = useContext(AuthContext);
+    const { loading, registerNewUser, updateUserProfile } = useContext(AuthContext);
 
+    const navigate = useNavigate();
     const handleUserRegistration = (e) => {
-        console.log(e);
         e.preventDefault();
         const form = e.target;
         const name = form.name.value;
         const photoURL = form.photo.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, photoURL, email, password);
 
         registerNewUser(email, password)
             .then(result => {
                 const user = result.user;
                 handleUpdateUserProfile(name, photoURL);
-                console.log(user);
+                toast.success(`You have successfully registered as ${user.displayName}`);
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -41,6 +41,7 @@ const Register = () => {
                 const errorMessage = error.message;
             })
     }
+
     return (
         <div className='flex items-center min-h-[84vh] py-10 m-3 md:py-14'>
             <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">

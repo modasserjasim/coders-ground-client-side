@@ -31,6 +31,7 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     const updateUserProfile = (profile) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, profile);
     }
     const logOut = () => {
@@ -42,6 +43,7 @@ const AuthProvider = ({ children }) => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('track using useEffect', currentUser);
             setUser(currentUser);
+
             setLoading(false);
         })
         return () => {
