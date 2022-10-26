@@ -8,6 +8,12 @@ const CourseCheckout = () => {
     const { user } = useContext(AuthContext);
     const course = useLoaderData();
     const { course_title, course_thumb, price } = course;
+    const taxTotal = (price * 0.10).toFixed(2);
+    const total = (price + parseFloat(taxTotal)).toFixed(2);
+
+    const handlePayment = () => {
+        alert('You are allset')
+    }
     return (
         <div className='min-h-[82vh]'>
             <h1 className='text-4xl text-center font-bold py-12'>Checkout Now</h1>
@@ -20,20 +26,20 @@ const CourseCheckout = () => {
                             </div>
                             <div className="text-sm font-medium ml-3">Checkout</div>
                         </div>
-                        <div className="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Complete payment details below to enroll the course.</div>
+                        <div className="text-sm tracking-wide text-gray-500 mt-4 sm:mt-0 sm:ml-4">Complete payment details below to enroll into the course.</div>
                     </div>
                     <div className="rounded-md">
                         <form id="payment-form">
                             <section>
-                                <h2 className="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Billing Information</h2>
-                                <fieldset className="mb-3 bg-white shadow-lg rounded text-gray-600">
+                                <h2 className="uppercase tracking-wide text-lg font-semibold  my-2">Billing Information</h2>
+                                <fieldset className="mb-3 bg-white shadow-lg rounded ">
                                     <label className="flex border-b border-gray-200 h-12 py-3 items-center">
                                         <span className="text-right px-2">Name</span>
-                                        <input name="name" className="focus:outline-none px-3" placeholder="Try Odinsson" required="" />
+                                        <input name="name" defaultValue={user?.displayName} className="focus:outline-none px-3 w-full" placeholder="Enter your name" required="" />
                                     </label>
                                     <label className="flex border-b border-gray-200 h-12 py-3 items-center">
                                         <span className="text-right px-2">Email</span>
-                                        <input name="email" type="email" className="focus:outline-none px-3" placeholder="try@example.com" required="" />
+                                        <input name="email" type="email" defaultValue={user?.email} className="focus:outline-none px-3 w-full" placeholder="Enter your email" required="" />
                                     </label>
 
                                 </fieldset>
@@ -51,8 +57,8 @@ const CourseCheckout = () => {
                             </fieldset>
                         </section>
                     </div>
-                    <button className="submit-button px-4 py-3 rounded-full bg-primary text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
-                        Pay €846.98
+                    <button onClick={handlePayment} className="submit-button px-4 py-3 rounded-full bg-primary text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
+                        Pay ${total}
                     </button>
                 </div>
                 <div className="col-span-3 border-r border-t border-b md:col-span-1 shadow-sm drop-shadow-xl rounded-r-md">
@@ -68,17 +74,17 @@ const CourseCheckout = () => {
                     </div>
                     <div className="px-8 border-b">
                         <div className="flex justify-between py-4 ">
-                            <span>Subtotal</span>
-                            <span className="font-semibold text-primary">€846.98</span>
+                            <span>Tax</span>
+                            <span className="font-semibold text-primary">${taxTotal}</span>
                         </div>
                         <div className="flex justify-between py-4 ">
-                            <span>Tax</span>
-                            <span className="font-semibold text-primary">$200</span>
+                            <span>Subtotal</span>
+                            <span className="font-semibold text-primary">${total}</span>
                         </div>
                     </div>
                     <div className="font-semibold text-xl px-8 flex justify-between py-8">
                         <span>Total</span>
-                        <span>€846.98</span>
+                        <span>${total}</span>
                     </div>
                 </div>
             </div>
