@@ -4,13 +4,13 @@ import nodeArch from '../../assets/node-arch.png';
 
 const Blog = () => {
     return (
-        <div className='my-10 px-4 md:px-6 max-w-7xl mx-auto'>
+        <div className='my-10 px-4 md:px-6 max-w-5xl mx-auto'>
             <div className="mb-12 space-y-2 text-center">
                 <span className="block w-max mx-auto px-3 py-1.5 border border-green-200 rounded-full bg-green-100 text-green-600">Blog</span>
                 <h2 className="text-2xl font-bold md:text-4xl">4 React JS Q&A</h2>
                 <p className="lg:w-5/12 lg:mx-auto">Learn how to think in React with step-by-step explanations and interactive examples.</p>
             </div>
-            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg">
+            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg shadow-lg">
                 <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
                 <div>
@@ -23,7 +23,7 @@ const Blog = () => {
                     </p>
                 </div>
             </div>
-            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8">
+            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8 shadow-lg">
                 <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-primary to-purple-600"></span>
 
                 <div>
@@ -36,13 +36,19 @@ const Blog = () => {
                         <span className='text-xl font-semibold'>The best Firebase features that I am addicted to use are:</span><br />
                         <ul className='ml-2 my-3'>
                             <li className='flex items-center gap-1 pb-2'>
-                                <IoCheckmarkSharp className='text-xl' /> <b>Firebase Remote Config:</b> I love this product; it actually saved me sometimes from going broke.
+                                <IoCheckmarkSharp className='text-xl' /> <p>
+                                    <b>Firebase Remote Config:</b> I love this product; it actually saved me sometimes from going broke.
+                                </p>
                             </li>
                             <li className='flex items-center gap-1 pb-2'>
-                                <IoCheckmarkSharp className='text-xl' /> <b>Firebase Database:</b> The feature I have been using from the very first day since it stores data as JSON and synchronized in realtime.
+                                <IoCheckmarkSharp className='text-xl' /> <p>
+                                    <b>Firebase Database:</b> The feature I have been using from the very first day since it stores data as JSON and synchronized in realtime.
+                                </p>
                             </li>
                             <li className='flex items-center gap-1 pb-2'>
-                                <IoCheckmarkSharp className='text-xl' /> <b>Firebase Authentication:</b> it has saved countless hours of my life since it allows to authenticates your app with the users.
+                                <IoCheckmarkSharp className='text-xl' /> <p>
+                                    <b>Firebase Authentication:</b> it has saved countless hours of my life since it allows to authenticates your app with the users.
+                                </p>
                             </li>
                         </ul>
 
@@ -51,7 +57,7 @@ const Blog = () => {
                     </div>
                 </div>
             </div>
-            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8">
+            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8 shadow-lg">
                 <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
                 <div>
@@ -63,7 +69,7 @@ const Blog = () => {
                     </p>
                 </div>
             </div>
-            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8">
+            <div className="relative block p-8 overflow-hidden border bg-white border-slate-100 rounded-lg mt-8 shadow-lg">
                 <span className="absolute inset-x-0 bottom-0 h-2 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></span>
 
                 <div>
