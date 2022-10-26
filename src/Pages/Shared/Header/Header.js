@@ -67,7 +67,7 @@ const Header = () => {
                         className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${navbar ? "block" : "hidden"
                             }`}
                     >
-                        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0">
+                        <ul className="items-center justify-center space-y-8 md:flex md:space-x-6 md:space-y-0 font-semibold uppercase">
                             <li className=" hover:text-primary">
                                 <Link to='/home'>Home</Link>
                             </li>
@@ -91,20 +91,20 @@ const Header = () => {
 
                         </ul>
 
-                        <div className="mt-3 space-y-2 md:hidden sm:inline-block">
+                        <div className="mt-3 space-y-2 md:hidden sm:inline-block ">
                             {
                                 user?.uid ? <Link onClick={handleLogOut}
-                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                    className="px-4 mr-3 py-2 text-white bg-base-600 rounded-md shadow hover:bg-gray-800"
                                 >
                                     Log Out
                                 </Link> : <>
                                     <Link to='/login'
-                                        className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                        className="px-4 mr-3 py-2 text-white bg-base-600 rounded-md shadow hover:bg-gray-800 font-semibold uppercase"
                                     >
                                         Login
                                     </Link>
                                     <Link to='/register'
-                                        className="px-4 py-2 btn-primary rounded-md shadow"
+                                        className="px-4 py-2 btn-primary rounded-md shadow font-semibold uppercase"
                                     >
                                         Register
                                     </Link>
@@ -117,17 +117,17 @@ const Header = () => {
                     <div>
                         {
                             user?.uid ? <Link onClick={handleLogOut}
-                                className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800 font-medium uppercase"
                             >
                                 Log Out
                             </Link> : <>
                                 <Link to='/login'
-                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
+                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800 font-medium uppercase"
                                 >
                                     Login
                                 </Link>
                                 <Link to='/register'
-                                    className="px-4 py-2 btn-primary rounded-md shadow"
+                                    className="px-4 py-2 btn-primary rounded-md shadow font-medium uppercase"
                                 >
                                     Register
                                 </Link>

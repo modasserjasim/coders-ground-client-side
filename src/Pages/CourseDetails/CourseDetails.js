@@ -6,7 +6,7 @@ import { BiPrinter } from "react-icons/bi";
 
 const CourseDetails = () => {
     const course = useLoaderData();
-    const { id, course_title, category_name, course_thumb, description, author, course_features, materials, price } = course;
+    const { id, course_title, category_name, course_thumb, description, instructor, course_features, materials, price } = course;
     console.log(course);
     return (
         <div className='lg:max-w-7xl mx-auto px-4 md:px-6'>
@@ -38,10 +38,10 @@ const CourseDetails = () => {
                     </div>
                     <h3 className='text-xl font-bold mt-8 py-2'>About Instructor</h3>
                     <div className='lg:flex gap-4 m-5 border'>
-                        <img src={author.img} alt={author.name} className="w-48" />
+                        <img src={instructor.img} alt={instructor.name} className="w-48" />
                         <div className='p-4'>
-                            <h3 className='text-xl font-bold'>{author.name}</h3>
-                            <p>{author.info}</p>
+                            <h3 className='text-xl font-bold'>{instructor.name}</h3>
+                            <p>{instructor.info}</p>
                         </div>
 
                     </div>

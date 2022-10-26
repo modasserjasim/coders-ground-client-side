@@ -13,15 +13,15 @@ const CoursesSidebar = () => {
     }, [])
 
     return (
-        <aside className="p-6 bg-base-200 h-auto">
+        <aside className="px-4 py-6 bg-base-200 h-auto">
             <div className="space-y-8 text-sm">
                 <div className="space-y-2">
                     <h2 className="text-lg font-bold tracking-widest uppercase">Our courses</h2>
                     {
-                        courses.map(course => <div key={course.id}>
-                            <Link to={`/course/${course.id}`} className='flex md:block lg:flex items-center gap-2 pb-3 hover:text-primary hover:transition hover:delay-75'>
-                                <img src={course.course_thumb} alt={course.course_title} className="w-16 h-12 rounded-md" />
-                                <h3 className='text-md font-semibold'>{course.course_title}</h3>
+                        courses.map(course => <div key={course.id} className="border rounded-md p-1 hover:bg-primary hover:text-white hover:transition transition hover:delay-75 delay-75">
+                            <Link to={`/course/${course.id}`} className='flex md:block lg:flex items-center gap-2 '>
+                                <img src={course.course_thumb} alt={course.course_title} className="w-16 h-12 rounded" />
+                                <h3 className='font-semibold text-base'>{course.course_title}</h3>
                             </Link>
                         </div>)
                     }
