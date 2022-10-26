@@ -94,12 +94,12 @@ const Header = () => {
                         <div className="mt-3 space-y-2 md:hidden sm:inline-block ">
                             {
                                 user?.uid ? <Link onClick={handleLogOut}
-                                    className="px-4 mr-3 py-2 text-white bg-base-600 rounded-md shadow hover:bg-gray-800"
+                                    className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800"
                                 >
                                     Log Out
                                 </Link> : <>
                                     <Link to='/login'
-                                        className="px-4 mr-3 py-2 text-white bg-base-600 rounded-md shadow hover:bg-gray-800 font-semibold uppercase"
+                                        className="px-4 mr-3 py-2 text-white bg-gray-600 rounded-md shadow hover:bg-gray-800 font-semibold uppercase"
                                     >
                                         Login
                                     </Link>

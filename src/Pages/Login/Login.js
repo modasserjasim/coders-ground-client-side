@@ -57,7 +57,7 @@ const Login = () => {
             })
     }
     return (
-        <div className='flex items-center min-h-[84vh] py-10 m-3'>
+        <div className='flex items-center min-h-[90vh] py-10 m-3'>
             <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
                 <h2 className="mb-10 text-3xl font-semibold text-center">Login to your account</h2>
                 <form onSubmit={handleLogin} className="mt-6">
@@ -66,7 +66,7 @@ const Login = () => {
                     <input id="email" type="email" name="email" placeholder="hello@modasserjasim.com" autoComplete="email" className="w-full px-3 py-2 border rounded-md" required />
 
                     <label htmlFor="password" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Password</label>
-                    <input id="password" type="password" name="password" placeholder="********" className="w-full px-3 py-2 border rounded-md" required />
+                    <input id="password" type="password" name="password" placeholder="******" className="w-full px-3 py-2 border rounded-md" required />
 
                     <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-primary shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none border rounded-md">
                         Login Now

@@ -20,10 +20,10 @@ const CourseCheckout = () => {
         <>
             {
                 course_title ? <>
-                    <div className='min-h-[82vh] py-12'>
+                    <div className='py-12'>
                         <h1 className='text-4xl text-center font-bold pb-12'>Checkout Now</h1>
                         <div className="md:grid grid-cols-3 flex flex-col-reverse px-4 md:px-6 max-w-7xl mx-auto">
-                            <div className="md:col-span-2 col-span-3 bg-base-200 space-y-8 p-12 rounded-l-md">
+                            <div className="md:col-span-2 col-span-3 bg-base-200 space-y-8 p-6 sm:p-12 rounded-l-md">
                                 <div className="p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
                                     <div className="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
                                         <div className="text-yellow-500 text-xl">
@@ -68,7 +68,7 @@ const CourseCheckout = () => {
                             </div>
                             <div className="col-span-3 border-r border-l md:border-l-0 border-t border-b md:col-span-1 shadow-sm drop-shadow-xl rounded-r-md">
                                 <h1 className="py-6 border-b-2 text-xl px-8">Order Summary</h1>
-                                <div className="flex justify-between items-center gap-3 border-b px-8 py-4">
+                                <div className="flex justify-between items-center gap-3 border-b sm:px-8 px-4 py-4">
                                     <div className="flex items-center gap-2">
                                         <img className='h-12 rounded-md' src={course_thumb} alt="Product" />
                                         <p className="text-md font-semi-bold">{course_title}</p>
