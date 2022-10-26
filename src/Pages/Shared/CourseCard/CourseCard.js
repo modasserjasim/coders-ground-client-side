@@ -3,7 +3,7 @@ import { HiOutlineClock } from "react-icons/hi";
 import { Link } from 'react-router-dom';
 
 const CourseCard = ({ course }) => {
-    const { id, course_title, category_name, course_thumb, course_description, course_duration, description, author } = course;
+    const { id, course_title, category_name, course_thumb, course_description, course_duration, author, price } = course;
     return (
         <div className="card w-auto bg-base-100 shadow-xl hover:drop-shadow-2xl">
 
@@ -33,7 +33,7 @@ const CourseCard = ({ course }) => {
 
             </div>
             <div className="flex justify-between py-3 px-6 border-t border-gray-300 text-gray-600">
-                <p className='text-xl font-semibold'>$99.00</p>
+                <p className='text-xl font-semibold'>${price}</p>
                 <Link to={`/course/${id}`} className="btn btn-sm">Learn More</Link>
             </div>
 

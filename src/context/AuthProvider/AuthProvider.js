@@ -34,6 +34,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, profile);
     }
     const logOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
@@ -47,7 +48,7 @@ const AuthProvider = ({ children }) => {
             unsubscribe();
         }
     }, [])
-    const authInfo = { user, loginWithGoogle, loginWithGithub, registerNewUser, loginWithEmail, updateUserProfile, logOut }
+    const authInfo = { user, loading, loginWithGoogle, loginWithGithub, registerNewUser, loginWithEmail, updateUserProfile, logOut }
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

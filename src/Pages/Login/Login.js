@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
@@ -7,6 +7,9 @@ import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
     const { loginWithGoogle, loginWithGithub, loginWithEmail } = useContext(AuthContext);
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
+    const navigate = useNavigate();
 
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
@@ -14,6 +17,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error => console.log(error))
     }
@@ -24,6 +28,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
     }
     const handleLogin = (e) => {
@@ -36,6 +41,7 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 const errorCode = error.code;

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import CoursesSidebar from '../Shared/CoursesSidebar/CoursesSidebar';
 import { FaCheck, FaRegCheckCircle } from "react-icons/fa";
-import { HiOutlinePrinter } from "react-icons/hi2";
+import { BiPrinter } from "react-icons/bi";
 
 const CourseDetails = () => {
     const course = useLoaderData();
@@ -20,10 +20,10 @@ const CourseDetails = () => {
                             <h1 className='text-2xl font-semibold'>{course_title}</h1>
                             <h3 className="">Category: {category_name}</h3>
                         </div>
-                        <button type='button'><HiOutlinePrinter className='text-4xl hover:text-primary' /></button>
+                        <button type='button'><BiPrinter className='text-4xl hover:text-primary' /></button>
 
                     </div>
-                    <img src={course_thumb} alt={course_title} />
+                    <img src={course_thumb} alt={course_title} className="rounded-md" />
                     <h3 className='text-2xl font-bold py-2'>About Course</h3>
                     <p>{description}</p>
 
@@ -37,7 +37,7 @@ const CourseDetails = () => {
                         }
                     </div>
                     <h3 className='text-xl font-bold mt-8 py-2'>About Instructor</h3>
-                    <div className='flex gap-4 m-5 border'>
+                    <div className='lg:flex gap-4 m-5 border'>
                         <img src={author.img} alt={author.name} className="w-48" />
                         <div className='p-4'>
                             <h3 className='text-xl font-bold'>{author.name}</h3>
@@ -45,8 +45,20 @@ const CourseDetails = () => {
                         </div>
 
                     </div>
+                    <div className='md:hidden p-4 border rounded-md shadow-2xl md:sticky md:top-5'>
+                        <h1 className='text-4xl font-extrabold'>${price}</h1>
+                        <h3 className='text-xl font-bold mt-10'>Material Includes</h3>
+
+                        {
+                            materials.map((mt, index) => <div key={index}>
+                                <p className='flex items-center gap-2 py-2'><FaCheck className='text-primary' /> {mt}</p>
+                            </div>)
+                        }
+                        <Link to={`/checkout/${id}`} className="w-full btn mt-7 hover:bg-primary">Get Premium Access</Link>
+                    </div>
                 </div>
-                <div className='col-span-2 my-10'>
+                {/* Hide this on mobile  */}
+                <div className='col-span-2 my-10 hidden md:block'>
                     <div className='p-4 border rounded-md shadow-2xl md:sticky md:top-5'>
                         <h1 className='text-4xl font-extrabold'>${price}</h1>
                         <h3 className='text-xl font-bold mt-10'>Material Includes</h3>
@@ -56,7 +68,7 @@ const CourseDetails = () => {
                                 <p className='flex items-center gap-2 py-2'><FaCheck className='text-primary' /> {mt}</p>
                             </div>)
                         }
-                        <button className="btn btn-wide mt-7 hover:bg-primary">Get Premium Access</button>
+                        <Link to={`/checkout/${id}`} className="w-full btn mt-7 hover:bg-primary">Get Premium Access</Link>
                     </div>
                 </div>
 
