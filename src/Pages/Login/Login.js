@@ -12,6 +12,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || '/';
     const navigate = useNavigate();
 
+    // login with email
     const googleProvider = new GoogleAuthProvider();
     const handleGoogleLogin = () => {
         loginWithGoogle(googleProvider)
@@ -26,6 +27,7 @@ const Login = () => {
             })
     }
 
+    // login with gITHUB
     const githubProvider = new GithubAuthProvider();
     const handleLoginGithub = () => {
         loginWithGithub(githubProvider)
@@ -39,17 +41,25 @@ const Login = () => {
                 toast.error(`Sorry! ${errorCode}`);
             })
     }
+
+    // Login with email and password
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
+
         loginWithEmail(email, password)
             .then(result => {
                 const user = result.user;
-                toast.success(`You have successfully logged in as ${user.displayName}`);
-                navigate(from, { replace: true });
+                form.reset();
+                if (user.emailVerified) {
+                    navigate(from, { replace: true });
+                    toast.success(`You have successfully logged in as ${user.displayName}`);
+                }
+                else {
+                    toast.error('Your email is not verified! Please verify your email address.')
+                }
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -79,15 +89,15 @@ const Login = () => {
                 </div>
                 <div className="my-6 space-y-4">
                     <button onClick={handleGoogleLogin} type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <IoLogoGoogle />
+                        <IoLogoGoogle className='text-xl' />
                         <p>Login with Google</p>
                     </button>
                     <button onClick={handleLoginGithub} type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <IoLogoGithub />
+                        <IoLogoGithub className='text-xl' />
                         <p>Login with GitHub</p>
                     </button>
                 </div>
-                <p className="text-sm text-center dark:text-gray-400">Don't have account?
+                <p className="text-sm text-center dark:text-gray-400">Don't have an account?
                     <Link to='/register' className="text-bold text-primary pl-1">Register here</Link>
                 </p>
             </div>

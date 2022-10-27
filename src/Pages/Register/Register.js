@@ -1,3 +1,4 @@
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
@@ -7,7 +8,7 @@ import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const { registerNewUser, updateUserProfile } = useContext(AuthContext);
+    const { registerNewUser, loginWithGoogle, loginWithGithub, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
     const handleUserRegistration = (e) => {
         e.preventDefault();
@@ -17,11 +18,14 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
 
+        //register with email and password
         registerNewUser(email, password)
             .then(result => {
                 const user = result.user;
+                form.reset();
                 handleUpdateUserProfile(name, photoURL);
-                toast.success(`You have successfully registered as ${user.displayName}`);
+                handleEmailVerification();
+                toast.success(`We have sent an verification email to [${email}]. Please verify your email address  before login!`);
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -29,6 +33,35 @@ const Register = () => {
             })
 
     }
+    // register with Google
+    const googleProvider = new GoogleAuthProvider();
+    const handleGoogleRegister = () => {
+        loginWithGoogle(googleProvider)
+            .then(result => {
+                const user = result.user;
+                toast.success(`You have successfully registered as ${user.displayName}`);
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                toast.error(`Sorry! ${errorCode}`);
+            })
+    }
+
+    // register with Github
+    const githubProvider = new GithubAuthProvider();
+    const handleGithubRegister = () => {
+        loginWithGithub(githubProvider)
+            .then(result => {
+                const user = result.user;
+                toast.success(`You have successfully registered in as ${user.displayName}`);
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                toast.error(`Sorry! ${errorCode}`);
+            })
+    }
+
+    // handle user profile update
     const handleUpdateUserProfile = (name, photoURL) => {
         const profile = { displayName: name, photoURL: photoURL };
         updateUserProfile(profile)
@@ -41,12 +74,19 @@ const Register = () => {
             })
     }
 
+    const handleEmailVerification = () => {
+        verifyEmail()
+            .then(() => { })
+            .catch(error => toast.error(error))
+    }
+
     return (
         <div className='flex items-center min-h-[90vh] py-10 m-3 md:py-14'>
             <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
                 <h2 className="mb-10 text-3xl font-semibold text-center">
                     Register an account
                 </h2>
+
                 <form onSubmit={handleUserRegistration} className="mt-6">
                     <label htmlFor="name" className="block text-xs font-semibold text-gray-600 mb-1">Your Name</label>
                     <input id="name" type="text" name="name" placeholder="Modasser Jasim" className="w-full px-3 py-2 border rounded-md" required />
@@ -66,13 +106,13 @@ const Register = () => {
                     <hr className="w-full dark:text-gray-400" />
                 </div>
                 <div className="my-6 space-y-4">
-                    <button aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <IoLogoGoogle />
-                        <p>Login with Google</p>
+                    <button onClick={handleGoogleRegister} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                        <IoLogoGoogle className='text-xl' />
+                        <p>Register with Google</p>
                     </button>
-                    <button aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
-                        <IoLogoGithub />
-                        <p>Login with GitHub</p>
+                    <button onClick={handleGithubRegister} aria-label="Login with GitHub" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
+                        <IoLogoGithub className='text-xl' />
+                        <p>Register with GitHub</p>
                     </button>
                 </div>
                 <p className="text-sm text-center dark:text-gray-400">Already have an account?

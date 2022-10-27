@@ -14,7 +14,6 @@ const options = {
 const CourseDetails = () => {
     const course = useLoaderData();
     const { id, course_title, category_name, course_thumb, description, instructor, course_features, materials, price } = course;
-    console.log(course);
     return (
         <div ref={ref} className='lg:max-w-7xl mx-auto px-4 md:px-6'>
             <div className='flex flex-col-reverse md:grid md:grid-cols-8 gap-5 lg:gap-8'>
@@ -41,13 +40,14 @@ const CourseDetails = () => {
 
                         {
                             course_features.map((feature, index) => <div key={index}>
-                                <p className='flex items-center gap-2 py-1'><FaRegCheckCircle className='text-primary' /> {feature}</p>
+                                <p className='flex items-center gap-2 py-1'>
+                                    <span><FaRegCheckCircle className='text-primary text-xl' /></span> {feature}</p>
                             </div>)
                         }
                     </div>
                     <h3 className='text-xl font-bold mt-8 py-2'>About Instructor</h3>
-                    <div className='lg:flex gap-4 m-5 border'>
-                        <img src={instructor.img} alt={instructor.name} className="w-48" />
+                    <div className='lg:flex gap-4 md:m-5 mb-5 border'>
+                        <img src={instructor.img} alt={instructor.name} className="md:w-48" />
                         <div className='p-4'>
                             <h3 className='text-xl font-bold'>{instructor.name}</h3>
                             <p>{instructor.info}</p>

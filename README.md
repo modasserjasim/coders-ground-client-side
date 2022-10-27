@@ -6,10 +6,11 @@ Coders Ground is a online learning platform where smart and enthusiastic people,
 Hosted in Firebase -> [Coders Ground](https://codersground-38a94.web.app/)
 
 ## The features I use in this project
-- This learning application has four pages, and the routing path is handled by the React router dom hook createBrowserRouter().
+- This learning application has 7 pages including login, registration and checkout, and the routing path is handled by the React router dom hook createBrowserRouter().
+- We are using Context API to organize the code and code repetition.
 - The authentication handled by Firebase authentication and database.
 - There are three authentication method implement in this application such as Google, GithHub and EmailPassword authentication.
-- There is a course page. The course data handle by our own server side local API by Node and Express JS.
+- There is a course page. The course data handle by our own server side local API by Node and Express JS but currently it's deployed to Vercel.
 - We have installed CORS package to avoid the cross-origin blocked issue at a different path.
 - There is an Print icon on course details page, where anyone will click an pdf will generate and start download automatically.
 - There is a private route when we click get Premium access, it will protected if the user is not logged in.
@@ -22,6 +23,6 @@ Hosted in Firebase -> [Coders Ground](https://codersground-38a94.web.app/)
 - [TailwindCSS Framework](https://tailwindCSS.com/)
 - [Daisy UI](https://daisyui.com/)
 - [React Hot Toast](https://react-hot-toast.com/)
-- [SweetAlert2](https://sweetalert2.github.io/)
+- [React To PDF Package](https://www.npmjs.com/package/react-to-pdf)
 - [React Icons](https://react-icons.github.io/react-icons/)
 - [Vercel Server](https://vercel.com/)
