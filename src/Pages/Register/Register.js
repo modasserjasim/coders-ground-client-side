@@ -2,14 +2,13 @@ import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
-    const { loading, registerNewUser, updateUserProfile } = useContext(AuthContext);
+    const { registerNewUser, updateUserProfile } = useContext(AuthContext);
 
-    const navigate = useNavigate();
     const handleUserRegistration = (e) => {
         e.preventDefault();
         const form = e.target;

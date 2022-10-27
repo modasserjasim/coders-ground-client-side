@@ -28,13 +28,13 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/courses',
-                loader: () => fetch('http://localhost:4200/courses'),
+                loader: () => fetch('https://coders-ground.vercel.app/courses'),
                 element: <Courses></Courses>
             },
             {
                 path: '/course/:id',
                 element: <CourseDetails></CourseDetails>,
-                loader: ({ params }) => fetch(`http://localhost:4200/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://coders-ground.vercel.app/course/${params.id}`)
             },
             {
                 path: '/faq',
@@ -55,7 +55,7 @@ export const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <PrivateRoute><CourseCheckout></CourseCheckout></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:4200/course/${params.id}`)
+                loader: ({ params }) => fetch(`https://coders-ground.vercel.app/course/${params.id}`)
             }
 
 

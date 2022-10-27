@@ -3,7 +3,7 @@ Coders Ground is a online learning platform where smart and enthusiastic people,
 
 ## Live Link
 
-Hosted in Firebase -> [Coders Ground](https://coders-ground.firebaseapp.com/)
+Hosted in Firebase -> [Coders Ground](https://codersground-38a94.web.app/)
 
 ## The features I use in this project
 - This learning application has four pages, and the routing path is handled by the React router dom hook createBrowserRouter().
@@ -16,6 +16,7 @@ Hosted in Firebase -> [Coders Ground](https://coders-ground.firebaseapp.com/)
 
 ## Resources & Credits
 - [ReactJS Library](https://reactjs.org/)
+- [Google Firebase](https://firebase.google.com/)
 - [React Router Dom](https://reactrouter.com/en/main)
 - [Context API](https://reactjs.org/docs/context.html#api)
 - [TailwindCSS Framework](https://tailwindCSS.com/)
@@ -23,4 +24,4 @@ Hosted in Firebase -> [Coders Ground](https://coders-ground.firebaseapp.com/)
 - [React Hot Toast](https://react-hot-toast.com/)
 - [SweetAlert2](https://sweetalert2.github.io/)
 - [React Icons](https://react-icons.github.io/react-icons/)
-- [ReCharts](https://recharts.org/en-US/)
+- [Vercel Server](https://vercel.com/)
