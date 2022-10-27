@@ -9,7 +9,7 @@ const CourseCard = ({ course }) => {
 
             <figure><img src={course_thumb} alt={course_title} /></figure>
             {
-                category_name === 'Programming' && <div className="badge badge-secondary absolute top-0 right-0">FEATURED</div>
+                category_name === 'Programming' && <div className="badge badge-primary absolute top-0 right-0">FEATURED</div>
             }
             <div className="card-body p-6">
                 <div className='flex justify-between flex-wrap'>

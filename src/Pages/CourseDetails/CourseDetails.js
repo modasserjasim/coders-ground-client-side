@@ -8,7 +8,7 @@ const ref = React.createRef();
 const options = {
     orientation: 'portrait',
     unit: 'in',
-    format: [6, 10]
+    format: [7, 9]
 };
 
 const CourseDetails = () => {

@@ -15,7 +15,7 @@ const CoursesSidebar = () => {
     return (
         <aside className="px-4 py-6 bg-base-200 h-auto">
             <div className="space-y-8 text-sm">
-                <div className="space-y-2">
+                <div className="space-y-4">
                     <h2 className="text-lg font-bold tracking-widest uppercase">Our courses</h2>
                     {
                         courses.map(course => <div key={course.id} className="border rounded-md p-1 hover:bg-primary hover:text-white hover:transition transition hover:delay-75 delay-75">
