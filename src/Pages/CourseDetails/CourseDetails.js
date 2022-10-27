@@ -3,13 +3,20 @@ import { Link, useLoaderData } from 'react-router-dom';
 import CoursesSidebar from '../Shared/CoursesSidebar/CoursesSidebar';
 import { FaCheck, FaRegCheckCircle } from "react-icons/fa";
 import { BiPrinter } from "react-icons/bi";
+import Pdf from "react-to-pdf";
+const ref = React.createRef();
+const options = {
+    orientation: 'portrait',
+    unit: 'in',
+    format: [6, 10]
+};
 
 const CourseDetails = () => {
     const course = useLoaderData();
     const { id, course_title, category_name, course_thumb, description, instructor, course_features, materials, price } = course;
     console.log(course);
     return (
-        <div className='lg:max-w-7xl mx-auto px-4 md:px-6'>
+        <div ref={ref} className='lg:max-w-7xl mx-auto px-4 md:px-6'>
             <div className='flex flex-col-reverse md:grid md:grid-cols-8 gap-5 lg:gap-8'>
                 <div className='col-span-2 bg-base-200'>
                     <CoursesSidebar></CoursesSidebar>
@@ -20,8 +27,10 @@ const CourseDetails = () => {
                             <h1 className='text-2xl font-semibold'>{course_title}</h1>
                             <h3 className="">Category: {category_name}</h3>
                         </div>
-                        <button type='button'><BiPrinter className='text-4xl hover:text-primary' /></button>
-
+                        <Pdf targetRef={ref} filename={`${id}.pdf`} options={options} x={0} y={0} scale={0.5}>
+                            {({ toPdf }) => <button onClick={toPdf} type='button'><BiPrinter className='text-4xl hover:text-primary' /></button>
+                            }
+                        </Pdf>
                     </div>
                     <img src={course_thumb} alt={course_title} className="rounded-md" />
                     <h3 className='text-2xl font-bold py-2'>About Course</h3>
