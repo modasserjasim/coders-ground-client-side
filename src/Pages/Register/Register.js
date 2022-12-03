@@ -3,13 +3,16 @@ import React from 'react';
 import { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation, ScrollRestoration } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 
 const Register = () => {
     const { registerNewUser, loginWithGoogle, loginWithGithub, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleUserRegistration = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -25,7 +28,9 @@ const Register = () => {
                 form.reset();
                 handleUpdateUserProfile(name, photoURL);
                 handleEmailVerification();
+                navigate('/login')
                 toast.success(`We have sent an verification email to [${email}]. Please verify your email address  before login!`);
+                location.reload();
             })
             .catch(error => {
                 const errorCode = error.code;
@@ -39,6 +44,7 @@ const Register = () => {
         loginWithGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 toast.success(`You have successfully registered as ${user.displayName}`);
             })
             .catch(error => {
@@ -53,6 +59,7 @@ const Register = () => {
         loginWithGithub(githubProvider)
             .then(result => {
                 const user = result.user;
+                navigate(from, { replace: true });
                 toast.success(`You have successfully registered in as ${user.displayName}`);
             })
             .catch(error => {
@@ -82,19 +89,20 @@ const Register = () => {
 
     return (
         <div className='flex items-center min-h-[90vh] py-10 m-3 md:py-14'>
-            <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
+            <ScrollRestoration />
+            <div className="w-full max-w-md p-4 border border-slate-200 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
                 <h2 className="mb-10 text-3xl font-semibold text-center">
                     Register an account
                 </h2>
 
                 <form onSubmit={handleUserRegistration} className="mt-6">
-                    <label htmlFor="name" className="block text-xs font-semibold text-gray-600 mb-1">Your Name</label>
+                    <label htmlFor="name" className="block text-xs font-semibold mb-1">Your Name</label>
                     <input id="name" type="text" name="name" placeholder="Modasser Jasim" className="w-full px-3 py-2 border rounded-md" required />
-                    <label htmlFor="photo" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Photo URL</label>
+                    <label htmlFor="photo" className="block text-xs font-semibold mt-4 mb-1">Photo URL</label>
                     <input id="photo" type="text" name="photo" placeholder="modasserjasim.com/profile.png" className="w-full px-3 py-2 border rounded-md" />
-                    <label htmlFor="email" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">E-mail Address</label>
+                    <label htmlFor="email" className="block text-xs font-semibold mt-4 mb-1">E-mail Address</label>
                     <input id="email" type="email" name="email" placeholder="hello@modasserjasim.com" autoComplete="email" className="w-full px-3 py-2 border rounded-md" required />
-                    <label htmlFor="password" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Password</label>
+                    <label htmlFor="password" className="block text-xs font-semibold mt-4 mb-1">Password</label>
                     <input id="password" type="password" name="password" placeholder="******" className="w-full px-3 py-2 border rounded-md" required />
                     <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-primary shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none border rounded-md">
                         Register Now

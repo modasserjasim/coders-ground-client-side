@@ -11,6 +11,9 @@ import CourseDetails from '../Pages/CourseDetails/CourseDetails';
 import Register from '../Pages/Register/Register';
 import CourseCheckout from '../Pages/CourseCheckout/CourseCheckout';
 import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PasswordReset from '../Pages/Others/PasswordReset/PasswordReset';
+import UserProfile from '../Pages/Others/UserProfile/UserProfile';
+import EditProfile from '../Pages/Others/EditProfile/EditProfile';
 
 export const router = createBrowserRouter([
     {
@@ -51,6 +54,18 @@ export const router = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/password-reset',
+                element: <PasswordReset></PasswordReset>
+            },
+            {
+                path: '/user-profile',
+                element: <PrivateRoute><UserProfile></UserProfile></PrivateRoute>
+            },
+            {
+                path: '/edit-profile',
+                element: <PrivateRoute><EditProfile></EditProfile></PrivateRoute>
             },
             {
                 path: '/checkout/:id',

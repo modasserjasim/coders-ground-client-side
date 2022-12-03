@@ -10,21 +10,37 @@ module.exports = {
   daisyui: {
     styled: true,
     themes: [
+      "winter",
+      "dark",
       {
-        light: {
-          ...require("daisyui/src/colors/themes")["[data-theme=light]"],
-          primary: "#3bacff",
-          "primary-focus": "mediumblue",
+        dark: {
+          ...require("daisyui/src/colors/themes")["[data-theme=dark]"],
+          primary: "#40bff8",
+          secondary: "#828df8",
+          color: "#b3c5ef",
+          "primary-focus": "#b3c5ef",
         },
-      },
+      }
+
     ],
     base: true,
     utils: true,
     logs: true,
     rtl: false,
     prefix: "",
-    // darkTheme: "light",
+    darkTheme: "winter",
   },
 
 
 }
+
+// before changing themes 
+// themes: [
+//   {
+//     light: {
+//       ...require("daisyui/src/colors/themes")["[data-theme=light]"],
+//       primary: "#3bacff",
+//       "primary-focus": "mediumblue",
+//     },
+//   },
+// ],

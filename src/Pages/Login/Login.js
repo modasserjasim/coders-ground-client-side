@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, ScrollRestoration, useLocation, useNavigate } from 'react-router-dom';
 import { IoLogoGoogle, IoLogoGithub } from "react-icons/io5";
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import toast from 'react-hot-toast';
+
 
 const Login = () => {
     const { loginWithGoogle, loginWithGithub, loginWithEmail } = useContext(AuthContext);
@@ -67,15 +68,16 @@ const Login = () => {
             })
     }
     return (
-        <div className='flex items-center min-h-[90vh] py-10 m-3'>
-            <div className="w-full max-w-md p-4 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
+        <div id="myDiv" className='flex items-center min-h-[90vh] py-10 m-3'>
+            <ScrollRestoration />
+            <div className="w-full max-w-md p-4 border border-slate-200 rounded-md shadow-lg sm:p-8 mx-auto drop-shadow-sm">
                 <h2 className="mb-10 text-3xl font-semibold text-center">Login to your account</h2>
                 <form onSubmit={handleLogin} className="mt-6">
 
-                    <label htmlFor="email" className="block text-xs font-semibold text-gray-600 mb-1">E-mail Address</label>
+                    <label htmlFor="email" className="block text-sm font-semibold  mb-1">E-mail Address</label>
                     <input id="email" type="email" name="email" placeholder="hello@modasserjasim.com" autoComplete="email" className="w-full px-3 py-2 border rounded-md" required />
 
-                    <label htmlFor="password" className="block text-xs font-semibold text-gray-600 mt-4 mb-1">Password</label>
+                    <label htmlFor="password" className="text-sm font-semibold mt-4 mb-1 flex justify-between"><span>Password</span> <span> Forgot password?<Link to='/password-reset' className='text-primary'> Reset here</Link></span></label>
                     <input id="password" type="password" name="password" placeholder="******" className="w-full px-3 py-2 border rounded-md" required />
 
                     <button type="submit" className="w-full py-3 mt-6 font-medium tracking-widest text-white uppercase bg-primary shadow-lg focus:outline-none hover:bg-gray-900 hover:shadow-none border rounded-md">

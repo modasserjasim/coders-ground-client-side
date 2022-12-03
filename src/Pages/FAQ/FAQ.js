@@ -1,8 +1,10 @@
 import React from 'react';
+import { ScrollRestoration } from 'react-router-dom';
 
 const FAQ = () => {
     return (
         <div className='my-10 px-4 md:px-6 max-w-3xl mx-auto'>
+            <ScrollRestoration />
             <div className="mb-12 space-y-2 text-center">
                 <span className="block w-max mx-auto px-3 py-1.5 border border-green-200 rounded-full bg-green-100 text-green-600">FAQs</span>
                 <h2 className="text-2xl font-bold md:text-4xl">Frequently Asked Questions</h2>

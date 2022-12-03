@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const CourseCard = ({ course }) => {
     const { id, course_title, category_name, course_thumb, course_description, course_duration, instructor, price } = course;
     return (
-        <div className="card w-auto bg-base-100 shadow-xl hover:drop-shadow-2xl">
+        <div className="card w-auto bg-base-100 border-base-300 border shadow-xl hover:drop-shadow-2xl">
 
             <figure><img src={course_thumb} alt={course_title} /></figure>
             {
@@ -32,7 +32,7 @@ const CourseCard = ({ course }) => {
 
 
             </div>
-            <div className="flex justify-between py-3 px-6 border-t border-gray-300 text-gray-600">
+            <div className="flex justify-between py-3 px-6 border-t border-base-300">
                 <p className='text-xl font-semibold'>${price}</p>
                 <Link to={`/course/${id}`} className="btn btn-sm">Learn More</Link>
             </div>
